@@ -38,6 +38,9 @@ Agent.init(
     },
     aboutMe: {
       type: Sequelize.TEXT
+    },
+    review: {
+      type: Sequelize.TEXT
     }
   },
   {
