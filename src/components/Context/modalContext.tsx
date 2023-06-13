@@ -11,6 +11,7 @@ export function ModalProvider({children}: ModalProviderProps): JSX.Element {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [needReload, setNeedReload] = useState(false);
     const [isform, setIsform] = useState("Yes");
+    const [searchString, setSearchString] = useState("");
     
     const openModal = () => {
         setIsform("Yes");
@@ -37,10 +38,12 @@ export function ModalProvider({children}: ModalProviderProps): JSX.Element {
                 needReload,
                 isModalOpen,
                 isform,
+                searchString,
                 openModal,
                 closeModal,
                 reload,
-                set_Isform
+                set_Isform,
+                setSearchString
             }}
         >
             {children}

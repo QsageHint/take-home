@@ -1,6 +1,7 @@
 const express = require('express');
 const { Agent } = require('./model');
 const bodyParser = require('body-parser');
+const { Op } = require('sequelize');
 
 const app = express();
 
@@ -14,6 +15,17 @@ app.get('/agents', async (req, res, next) => {
 app.post('/create', async (req, res, next) => {
   await Agent.create(req.body);
   return res.json({status: 'success'});
+})
+
+app.post('/search', async (req, res, next) => {
+  const agents = await Agent.findAll({
+    where: {
+      practiceAreas: {
+        [Op.like]: `%${req.body.searchString}%`
+      }
+    }
+  })
+  return res.json(agents);
 })
 
 module.exports = app;

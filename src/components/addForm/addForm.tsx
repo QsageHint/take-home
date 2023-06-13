@@ -49,6 +49,7 @@ const AddForm: React.FC = () => {
                 id="first_name"
                 className="form-control"
                 value={first_name}
+                required
                 onChange={(event) => setfirstName(event.target.value)}
                 />
             </div>
@@ -59,6 +60,7 @@ const AddForm: React.FC = () => {
                 id="last_name"
                 className="form-control"
                 value={last_name}
+                required
                 onChange={(event) => setlastName(event.target.value)}
                 />
             </div>
@@ -79,6 +81,7 @@ const AddForm: React.FC = () => {
                 id="agentLicence"
                 className="form-control"
                 value={agentLicence}
+                required
                 onChange={(event) => setAgentLicence(event.target.value)}
                 />
             </div>
@@ -89,6 +92,7 @@ const AddForm: React.FC = () => {
                 id="address"
                 className="form-control"
                 value={address}
+                required
                 onChange={(event) => setAddress(event.target.value)}
                 />
             </div>

@@ -9,7 +9,7 @@ import { useModalContext } from '../Hook/useModalContext'
 
 const Agents: FC = () => {
   const [agents, setAgents] = useState<IAgent[]>([]);
-  const { needReload } = useModalContext();
+  const { needReload, searchString } = useModalContext();
 
   useEffect(() => {
     async function fetchInitialData() {
@@ -18,6 +18,17 @@ const Agents: FC = () => {
     }
     fetchInitialData();
   }, [needReload]);
+
+  useEffect(() => {
+    async function fetchSearchData(searchString: string) {
+      const response = await axios.post("/search", {
+        searchString
+      });
+      console.log(response.data);
+      setAgents(response.data);
+    }
+    fetchSearchData(searchString);
+  }, [searchString]);
 
   return (
     <div className="agents">
