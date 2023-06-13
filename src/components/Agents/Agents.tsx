@@ -4,6 +4,7 @@ import Agent from "./Agent";
 import { IAgent } from "../../types/Agent";
 import axios from "axios";
 import './Agents.css'
+import Modal from '../Modal/Modal';
 
 const Agents: FC = () => {
   const [agents, setAgents] = useState<IAgent[]>([]);
@@ -21,6 +22,7 @@ const Agents: FC = () => {
       {agents.map((agent) => (
         <Agent key={agent.id} agent={agent} />
       ))}
+      <Modal />
     </div>
   );
 };
