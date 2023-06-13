@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Modal.css';
 import { useModalContext } from '../Hook/useModalContext';
 
 
 const Modal: React.FC = () => {
-  const { isModalOpen, closeModal } = useModalContext();
+  const { isModalOpen, closeModal, reload } = useModalContext();
 
   const [first_name, setfirstName] = useState("");
   const [last_name, setlastName] = useState("");
@@ -22,8 +23,22 @@ const Modal: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
+    await axios.post("/create", {
+      firstName: first_name,
+      lastName: last_name,
+      photoUrl: photourl,
+      agentLicence: agentLicence,
+      address: address,
+      practiceAreas: practiceAreas.join(","),
+      aboutMe: aboutMe
+    }).then(response => {
+      closeModal();
+      reload();
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
   };
 
   return (
@@ -124,8 +139,8 @@ const Modal: React.FC = () => {
                     onChange={(event) => setAboutMe(event.target.value)}
                   />
                 </div>
-                <button type="submit" className="btn btn-primary" >
-                  Save Change
+                <button type="button" className="btn btn-primary" onClick={handleSubmit}>
+                  Add
                 </button>
               </form>
             </div>

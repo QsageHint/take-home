@@ -5,9 +5,11 @@ import { IAgent } from "../../types/Agent";
 import axios from "axios";
 import './Agents.css'
 import Modal from '../Modal/Modal';
+import { useModalContext } from '../Hook/useModalContext'
 
 const Agents: FC = () => {
   const [agents, setAgents] = useState<IAgent[]>([]);
+  const { needReload } = useModalContext();
 
   useEffect(() => {
     async function fetchInitialData() {
@@ -15,7 +17,7 @@ const Agents: FC = () => {
       setAgents(response.data);
     }
     fetchInitialData();
-  }, []);
+  }, [needReload]);
 
   return (
     <div className="agents">
