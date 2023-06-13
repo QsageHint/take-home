@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
 import { modalContextData } from '../types/modalContextData';
+import { IsformProps } from '../types/Agent'
 
 interface ModalProviderProps {
     children: ReactNode
@@ -12,6 +13,7 @@ export function ModalProvider({children}: ModalProviderProps): JSX.Element {
     const [needReload, setNeedReload] = useState(false);
     const [isform, setIsform] = useState("Yes");
     const [searchString, setSearchString] = useState("");
+    const [agentReview, setAgentReview] = useState("");
     
     const openModal = () => {
         setIsform("Yes");
@@ -26,9 +28,9 @@ export function ModalProvider({children}: ModalProviderProps): JSX.Element {
         setNeedReload(!needReload);
     }
 
-    const set_Isform = (key: string) => {
-        setIsform(key);
-        console.log(key);
+    const set_Isform = (key: IsformProps) => {
+        setIsform(key.key1);
+        setAgentReview(key.key2);
         setIsModalOpen(true);
     }
 
@@ -39,6 +41,7 @@ export function ModalProvider({children}: ModalProviderProps): JSX.Element {
                 isModalOpen,
                 isform,
                 searchString,
+                agentReview,
                 openModal,
                 closeModal,
                 reload,

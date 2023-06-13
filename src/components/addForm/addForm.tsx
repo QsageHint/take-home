@@ -41,7 +41,7 @@ const AddForm: React.FC = () => {
     };
   
     return (
-        <form onSubmit={handleSubmit} >
+        <form>
             <div className="form-group">
                 <label htmlFor="first_name">First Name</label>
                 <input

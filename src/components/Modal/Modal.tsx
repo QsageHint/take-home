@@ -4,7 +4,8 @@ import { useModalContext } from '../../Hook/useModalContext';
 import AddFrom from '../addForm/addForm';
 
 const Modal: React.FC = () => {
-  const { isModalOpen, closeModal, isform } = useModalContext();
+  const { isModalOpen, closeModal, isform, agentReview } = useModalContext();
+
 
   return (
     <>
@@ -19,7 +20,7 @@ const Modal: React.FC = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                {isform === "Yes"? "Add Agent Here": "Agent License Info"}
+                {isform === "Yes"? "Add Agent Here": "Agent License Info & review"}
               </h5>
               <button
                 type="button"
@@ -31,6 +32,7 @@ const Modal: React.FC = () => {
             </div>
             <div className="modal-body">
               {isform === "Yes"? <AddFrom />: isform}
+              <h4>{agentReview}</h4>
             </div>
           </div>
         </div>

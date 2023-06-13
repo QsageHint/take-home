@@ -28,4 +28,21 @@ app.post('/search', async (req, res, next) => {
   return res.json(agents);
 })
 
+app.post('/createreview', async (req, res, next) => {
+  let review = "";
+  await Agent.findByPk(req.body.id).then(agent => {
+    review = agent.dataValues.review;
+  })
+  const str = review + '\n' + req.body.review;
+
+  await Agent.update({
+    review: str
+  }, {
+    where: { id: req.body.id }
+  });
+
+  return res.json({ status: 'success' });
+
+})
+
 module.exports = app;
