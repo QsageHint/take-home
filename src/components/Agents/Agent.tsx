@@ -1,11 +1,13 @@
 import type { FC } from "react";
 import { IAgent } from "../../types/Agent";
-
 import './Agent.css'
+import { useModalContext } from '../Hook/useModalContext'
 
 const Agent: FC<{ agent: IAgent }> = ({ agent }) => {
+  const { set_Isform } = useModalContext();
+
   return (
-    <div className="container">
+    <div className="container" onClick={() => set_Isform(agent.agentLicence) }>
       <header>
         <div className="avatar-holder">
           <img src={agent.photoUrl} className="avatar" alt={agent.firstName} />

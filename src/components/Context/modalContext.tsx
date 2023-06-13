@@ -10,8 +10,10 @@ export const ModalContext = createContext<modalContextData>({} as modalContextDa
 export function ModalProvider({children}: ModalProviderProps): JSX.Element {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [needReload, setNeedReload] = useState(false);
+    const [isform, setIsform] = useState("Yes");
     
     const openModal = () => {
+        setIsform("Yes");
         setIsModalOpen(true);
     }
 
@@ -23,14 +25,22 @@ export function ModalProvider({children}: ModalProviderProps): JSX.Element {
         setNeedReload(!needReload);
     }
 
+    const set_Isform = (key: string) => {
+        setIsform(key);
+        console.log(key);
+        setIsModalOpen(true);
+    }
+
     return (
         <ModalContext.Provider
             value={{
                 needReload,
                 isModalOpen,
+                isform,
                 openModal,
                 closeModal,
-                reload
+                reload,
+                set_Isform
             }}
         >
             {children}
