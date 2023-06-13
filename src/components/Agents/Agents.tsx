@@ -5,7 +5,7 @@ import { IAgent } from "../../types/Agent";
 import axios from "axios";
 import './Agents.css'
 import Modal from '../Modal/Modal';
-import { useModalContext } from '../Hook/useModalContext'
+import { useModalContext } from '../../Hook/useModalContext'
 
 const Agents: FC = () => {
   const [agents, setAgents] = useState<IAgent[]>([]);

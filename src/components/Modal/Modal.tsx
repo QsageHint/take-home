@@ -1,6 +1,6 @@
 import React from 'react';
 import './Modal.css';
-import { useModalContext } from '../Hook/useModalContext';
+import { useModalContext } from '../../Hook/useModalContext';
 import AddFrom from '../addForm/addForm';
 
 const Modal: React.FC = () => {

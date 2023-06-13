@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { IAgent } from "../../types/Agent";
 import './Agent.css'
-import { useModalContext } from '../Hook/useModalContext'
+import { useModalContext } from '../../Hook/useModalContext'
 
 const Agent: FC<{ agent: IAgent }> = ({ agent }) => {
   const { set_Isform } = useModalContext();

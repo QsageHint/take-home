@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-import { modalContextData } from '../../types/modalContextData';
+import { modalContextData } from '../types/modalContextData';
 
 interface ModalProviderProps {
     children: ReactNode

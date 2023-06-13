@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navbar.css';
-import { useModalContext } from "../Hook/useModalContext";
+import { useModalContext } from "../../Hook/useModalContext";
 
 const Navbar: React.FC = () => {
   const { openModal, setSearchString } = useModalContext();
